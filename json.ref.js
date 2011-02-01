@@ -1,4 +1,6 @@
-// This plugin wraps dojox.json.ref so we don't need dojo, requires jQuery (for map function)
+// This plugin wraps dojox.json.ref so we don't need dojo, requires underscore (for map function)
+
+var _ = require("underscore");
 
 /*
 The "New" BSD License:
@@ -49,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   dojo.toJson = function(obj) {
     return JSON.stringify(obj);
   }
-  dojo.map = jQuery.map;
+  dojo.map = _.map;
   
   // Implement!
   // dojo.date.stamp.toISOString;
@@ -408,6 +410,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    serializeFunctions: false
   }
 
-  jQuery.fromJsonRef = function(str, args) { return dojox.json.ref.fromJson(str, args); };
-  jQuery.toJsonRef = function(str, args) { return dojox.json.ref.toJson(str, args); };
+  module.exports.resolveJson = function(str, args) { return dojox.json.ref.resolveJson(str, args); };
+  module.exports.fromJsonRef = function(str, args) { return dojox.json.ref.fromJson(str, args); };
+  module.exports.toJsonRef = function(str, args) { return dojox.json.ref.toJson(str, args); };
 })();
